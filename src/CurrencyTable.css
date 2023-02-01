@@ -1,0 +1,38 @@
+.list-group {
+    max-height: 405px;
+    margin-bottom: 10px;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+}
+
+.list-group-item.active {
+    background-color: rgb(110, 110, 255);
+}
+
+.list-group-item {
+    background-color: rgb(23, 21, 53);
+    border: 0.5px solid rgb(110, 110, 255);
+    color:  white;
+}
+
+.header {
+    position:sticky;
+    top: 0;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgb(110, 110, 255); 
+}
+
+

@@ -1,0 +1,30 @@
+.group{
+    background: rgb(23, 21, 53);
+    border-radius: 15px;
+    display: inline-block;
+    height: 50px;
+    margin-left: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+input,select{
+    border:0;
+    background: none;
+}
+
+input{
+    padding-left: 15px;
+    color: rgb(144, 144, 255)
+}
+
+select{
+    padding: 15px;
+    color: rgb(144, 144, 255)
+}
+
+@media only screen and (max-width: 767px) {
+    .group {
+      margin-bottom: 5px;
+    }
+  }
