@@ -1,34 +1,44 @@
 import React, { useEffect, useState } from "react";
+import "./CurrencyTable.css"
 import axios from "axios";
-import "./CurrencyTable.css";
 
 function CurrencyTable() {
-  const [ratesList, setRatesList] = useState([]);
+  const [rates, setRates] = useState({});
+  const [base, setBase] = useState(["USD"]);
 
   useEffect(() => {
     getRates("USD");
-  });
+    // eslint-disable-next-line
+  }, []);
 
   const getRates = async (base) => {
     const res = await axios.get(
-      ` https://api.frankfurter.app/latest?from=USD `
+      `https://api.frankfurter.app/latest?from=${base}`
     );
-    const { rates } = res.data;
-
-    const ratesTemp = [];
-    for (const [symbol, rate] of Object.entries(rates)) {
-      ratesTemp.push({ symbol, rate });
-    }
-    setRatesList(ratesTemp);
+    setRates(res.data.rates);
+    console.log(base)
+    setBase(res.data.base)
   };
 
   return (
     <div className="currency-rates">
+      <select
+        value={base}
+        onChange={(e) => {
+          getRates(e.target.value);
+          setBase(e.target.value);
+        }}
+      >
+        {Object.entries(rates).map(([symbol]) => (
+          <option value={symbol} key={symbol}>
+            {symbol}
+          </option>
+        ))}
+      </select>
       <ul className="list-group">
-      <li className="list-group-item active header">USD - 1</li>
-        {ratesList.map((d) => (
-          <li className="list-group-item" key={d.symbol}>
-            {d.symbol} - {d.rate}
+        {Object.entries(rates).map(([symbol, rate]) => (
+          <li className="list-group-item" key={symbol}>
+            {symbol} - {rate}
           </li>
         ))}
       </ul>

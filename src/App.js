@@ -46,12 +46,11 @@ function App() {
   }
 
   function handleAmount2Change(amount2) {
-    setAmount1(format(amount2 * rates[currency1] / rates[currency2]));
     setAmount2(amount2);
   }
 
   function handleCurrency2Change(currency2) {
-    setAmount1(format(amount2 * rates[currency1] / rates[currency2]));
+    setAmount2(format(amount1 * rates[currency2] / rates[currency1]));
     setCurrency2(currency2);
   }
 
